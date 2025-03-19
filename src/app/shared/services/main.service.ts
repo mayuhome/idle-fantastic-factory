@@ -14,14 +14,13 @@ export class MainService {
   coins$!: Observable<BigNumber>;
 
   constructor(
-    private timerService: TimerService,
-    private coinService: CoinService,
+    public timerService: TimerService,
+    public coinService: CoinService,
     private clickerService: ClickerService,
     private goodsService: GoodsService
   ) { 
     this.init();
     this.coins$ = this.coinService.coins$;
-
   }
 
   init(){
@@ -30,5 +29,9 @@ export class MainService {
       
       this.coinService.addCoins(this.goodsService.goodsEarnedPerSecond);
     });
+  }
+
+  canBuy(input: BigNumber | number){
+    return this.coinService.coins >= input;
   }
 }

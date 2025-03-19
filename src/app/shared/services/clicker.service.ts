@@ -15,6 +15,8 @@ export class ClickerService {
   ) { }
 
   click(){
+    console.log('click:', this.perClickerSubject.value);
+    
     this.coinService.addCoins(this.perClickerSubject.value);
   }
 }

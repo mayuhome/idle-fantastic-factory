@@ -1,2 +1,27 @@
-<p>factory works!</p>
-<p>Coins: {{mainService.coins$ | async}}</p>
+    <div>
+        Time: <span>{{mainService.timerService.time}}</span>
+    </div>
+    @let coins = (coins$ | async) || ZERO;
+    <app-layout>
+        <p class="my-5"><span class="text-xl px-2 py-5 mx-3 my-5 text-orange-400">Account:</span><span class="text-2xl font-bold bg-gradient-to-r from-pink-300 to-purple-500 bg-clip-text text-transparent" >{{coins.toFixed(0)}}</span></p>
+        <!-- <div class="flex items-center justify-center min-h-screen bg-gray-100"> -->
+            <!-- <div class="relative"> -->
+                <!-- 按钮 -->
+                <button id="coinButton" class="mx-4 px-6 py-2 bg-yellow-400 text-white font-bold rounded-lg shadow-lg hover:bg-yellow-500 transition-colors" (click)="handleClicker()">
+                  点击增加
+                </button>
+            
+                <!-- 弹出的文字 -->
+                <div id="coinText" class="relative -right-10 top-0 hidden text-yellow-600 font-bold text-xl">
+                  + 35
+                </div>
+              <!-- </div> -->
+        <!-- </div> -->
+        @for (item of goods; track $index) {
+            <app-goods [good]="item" [notAvailable]="item.cost.isGreaterThan(coins)"></app-goods>
+        }
+    </app-layout>
+    
+
+
+

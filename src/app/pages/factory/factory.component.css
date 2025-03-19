@@ -1,0 +1,14 @@
+    /* 自定义动画 */
+    @keyframes coinIncrease {
+        0% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-50px) scale(1.5);
+        }
+      }
+      .coin-animation {
+        animation: coinIncrease 2s ease-out forwards;
+      }

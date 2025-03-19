@@ -24,7 +24,7 @@ export class GoodsService {
     
     const a = combineLatest(this.goods.map(good =>
     {
-      good.addAccount(BigNumber(1));
+      // good.addAccount(BigNumber(1));
       console.log('good:', good.value.toString());
       
       return good.perEarn$;

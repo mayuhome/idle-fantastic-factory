@@ -9,8 +9,8 @@ export interface IGoods {
     upgradeRate: BigNumber;
     account: BigNumber;
     perEarn$: Observable<BigNumber>;
-    addAccount(cnt: BigNumber): void;
-    costByAccount(cnt: BigNumber): BigNumber;
+    addAccount(cnt: BigNumber| number): void;
+    costByAccount(cnt: BigNumber | number): BigNumber;
 }
 
 export class Goods implements IGoods {
@@ -31,13 +31,17 @@ export class Goods implements IGoods {
         this.account = BigNumber(0);
     }
 
-    addAccount(cnt: BigNumber) {
-        this.account = this.account.plus(cnt);
-        this.cost.multipliedBy(this.upgradeRate.pow(cnt.plus(1)));
+    addAccount(cnt: BigNumber | number) {
+        const formatCnt = new BigNumber(cnt);
+        this.account = this.account.plus(formatCnt);
+        this.cost = this.cost.multipliedBy(this.upgradeRate.pow(formatCnt.plus(1)));
         this.perEarnSubject.next(this.account.multipliedBy(this.value));
+        console.log(`add goods ${this.name}`);
+        
     }
-    costByAccount(cnt: BigNumber) {
-        return this.cost.multipliedBy(this.upgradeRate.pow(cnt));
+    costByAccount(cnt: BigNumber | number) {
+        const formatCnt = new BigNumber(cnt);
+        return this.cost.multipliedBy(this.upgradeRate.pow(formatCnt));
     }
 }
 
@@ -57,7 +61,7 @@ export class GoodsTwo extends Goods {
         super();
         this.level = 2;
         this.name = 'level two';
-        this.cost = BigNumber(1125);
+        this.cost = BigNumber(125);
         this.upgradeRate = BigNumber(1.15);
         this.value = BigNumber(6);
     }
