@@ -12,16 +12,16 @@
                 </button>
             
                 <!-- 弹出的文字 -->
-                <div id="coinText" class="relative -right-10 top-0 hidden text-yellow-600 font-bold text-xl">
+                <!-- <div id="coinText" class="relative -right-10 top-0 hidden text-yellow-600 font-bold text-xl">
                   + 35
-                </div>
+                </div> -->
               <!-- </div> -->
         <!-- </div> -->
         @for (item of goods; track $index) {
             <app-goods [good]="item" [notAvailable]="item.cost.isGreaterThan(coins)"></app-goods>
         }
     </app-layout>
-    
+
 
 
 
