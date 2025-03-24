@@ -1,7 +1,7 @@
 <div class="h-[200px] w-[600px] p-5 bg-blend-color rounded-lg shadow-lg hover:bg-blend-color-burn">
     <div>Name: {{good.name}}</div>
     <div>Cost: {{good.cost.toFixed(0)}}</div>
-    <div>Account: {{good.account}}</div>
+    <div>Account: {{good.count}}</div>
     <div>Value:{{good.value}}</div>
     <button class="my-2 mx-4 px-6 py-2 btn " [disabled]="notAvailable" [ngClass]="notAvailable?'btn-disabled':''" (click)="add()">ADD</button>
 </div>

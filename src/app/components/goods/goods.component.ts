@@ -16,7 +16,7 @@ export class GoodsComponent {
 
   @Input() notAvailable = true;
   constructor(
-    private coinService: CoinService
+    private coinService: CoinService,
   ){}
 
   add(cnt = 1){

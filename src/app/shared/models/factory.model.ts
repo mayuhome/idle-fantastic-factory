@@ -1,6 +1,7 @@
 import BigNumber from 'bignumber.js';
 import { ResourceCost } from './skill.model';
 import { FormulaParams, FormulaType } from '../../models/formula.model';
+import { FactionType } from './main-state.model';
 
 export interface IFactory {
     id: string; // 工厂ID
@@ -9,7 +10,7 @@ export interface IFactory {
     faction: FactionType | null; // null 表示通用
     baseTier: number; // 基础等级
     categories: string[]; // 分类标签
-    tiers: Map<number, FactoryTier>; // 工厂等级配置    
+    tiers: Map<number, FactoryTier>; // 工厂等级配置
 }
 
 export class FactorySchema {

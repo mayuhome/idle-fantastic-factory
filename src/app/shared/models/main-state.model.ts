@@ -1,4 +1,4 @@
-type FactionType = "angel" | "demon" | "elf" | 'human';
+export type FactionType = "angel" | "demon" | "elf" | 'human';
 type BuildingTier = "";
 
 interface IMainState {

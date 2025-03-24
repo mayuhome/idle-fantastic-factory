@@ -10,10 +10,10 @@ import { Factory_Farm } from '../../data/factory';
 export class FactoryManagerService {
 
   private schema = new Map<string, FactorySchema>();
-  private factories = new Map<string, FactoryInstance>();  
+  public factories = new Map<string, FactoryInstance>();  
 
   constructor(
-    private http: HttpClient
+    // private http: HttpClient
   ) { }
 
   async initialize() {
@@ -24,7 +24,10 @@ export class FactoryManagerService {
   private async loadSchemas() {
     // const schemas = await this.http.get<FactorySchema[]>('assets/data/factories.json').toPromise()||[];
     const schemas = [...Factory_Farm];
-    schemas.forEach(schema => this.schema.set(schema.id, schema));
+    schemas.forEach(schema => {
+      this.schema.set(schema.id, schema);
+      this.factories.set(schema.id, new FactoryInstance(schema));
+    });
   }
 
   // private loadInstances() {
