@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { IGoods } from '../../shared/models/goods.model';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { CoinService } from '../../shared/services/coin.service';
 
 @Component({
   selector: 'app-goods',
-  imports: [NgIf, NgClass],
+  imports: [NgClass],
   templateUrl: './goods.component.html',
   styleUrl: './goods.component.css'
 })

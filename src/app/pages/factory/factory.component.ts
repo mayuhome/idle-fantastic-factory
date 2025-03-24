@@ -9,6 +9,8 @@ import { GoodsService } from '../../shared/services/goods.service';
 import BigNumber from 'bignumber.js';
 import { Observable } from 'rxjs';
 import { FactoryManagerService } from '../../shared/services/factory-manager.service';
+import * as PIXI from 'pixi.js';
+import { Application, Rectangle, Assets } from 'pixi.js';
 
 @Component({
   selector: 'app-factory',
@@ -41,7 +43,8 @@ export class FactoryComponent implements AfterViewInit, OnInit {
     
   }
 
-  ngAfterViewInit(): void {
+  async ngAfterViewInit() {
+    await this.loadImg();
     this.coinButton = document.getElementById('coinButton') as HTMLButtonElement;
     this.coinText = document.getElementById('coinText') as HTMLDivElement;
     this.coinButton.addEventListener('click', () => {
@@ -63,5 +66,27 @@ export class FactoryComponent implements AfterViewInit, OnInit {
 
   canBy(cost: BigNumber){
     return this.mainService.canBuy(cost);
+  }
+
+  async loadImg() {
+    const app = new Application();
+    await app.init({ background: '#1099bb', width: 64, height: 64 });
+    console.log('app:', app);
+    
+    document.body.appendChild(app.canvas);
+
+    // 加载图片
+    const texture = await Assets.load('../../../assets/images/gold.png');
+
+    // 定义子纹理区域(x,y,width,height)
+    const frame = new PIXI.Rectangle(67*6, 4, 60, 60);
+    const subTexture = new PIXI.Texture({
+      source: texture.source,
+      frame: frame,
+    });
+    // 创建精灵
+    const sprite = new PIXI.Sprite(subTexture);
+    sprite.position.set(0,0);
+    app.stage.addChild(sprite);
   }
 }

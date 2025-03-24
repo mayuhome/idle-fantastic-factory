@@ -31,6 +31,8 @@ export class FactoryInstance {
             coin = coin.minus(this.costAfford(cnt));
             console.log(`add ${cnt} ${this.schema.name}`);
             return true;
+        }else{
+            return false;
         }
     }
 
