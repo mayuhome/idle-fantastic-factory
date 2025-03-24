@@ -1,0 +1,61 @@
+[
+    {
+        "id": "Farm",
+        "name": "农场",
+        "description": "生产基础食物资源，解锁初级经济链",
+        "faction": null,
+        "baseTier": 1,
+        "categories": ["agriculture", "basic"],
+        
+        "tiers": {
+          "1": {
+            "unlockConditions": {
+              "totalGold": [1, 3] 
+            },
+            "upgradeCost": {
+              "base": { "gold": [5, 2] },
+              "scaling": {
+                "formula": "base * 1.15^level",
+                "variables": { "base": 500 }
+              }
+            },
+            "effects": [{
+              "type": "production",
+              "target": "foodPerSecond",
+              "value": 10
+            }],
+            "visual": {
+              "spriteSheet": "assets/buildings/farm_t1.png",
+              "animation": "smoke"
+            }
+          },
+          "2": {
+            "unlockConditions": {
+              "buildingPrerequisites": [
+                { "buildingId": "Mill", "minLevel": 2 }
+              ]
+            },
+            "upgradeCost": {
+              "base": { "gold": [2, 4] }, 
+              "scaling": {  }
+            },
+            "effects": [{
+              "type": "production",
+              "target": "foodPerSecond",
+              "value": "base * 1.5" 
+            }]
+          }
+        },
+      
+        "globalModifiers": {
+          "perXBuildings": [{
+            "threshold": 25,
+            "effect": {
+              "type": "globalMultiplier",
+              "target": "allFoodProduction",
+              "value": 0.1
+            }
+          }]
+        }
+      }
+]

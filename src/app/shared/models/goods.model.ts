@@ -7,7 +7,7 @@ export interface IGoods {
     value: BigNumber;
     cost: BigNumber;
     upgradeRate: BigNumber;
-    account: BigNumber;
+    count: BigNumber;
     perEarn$: Observable<BigNumber>;
     addAccount(cnt: BigNumber| number): void;
     costByAccount(cnt: BigNumber | number): BigNumber;
@@ -21,21 +21,21 @@ export class Goods implements IGoods {
     value: BigNumber;
     cost: BigNumber;
     upgradeRate: BigNumber;
-    account: BigNumber;
+    count: BigNumber;
     constructor() { 
         this.level = 0;
         this.name = '';
         this.value = BigNumber(0);
         this.cost = BigNumber(0);
         this.upgradeRate = BigNumber(0);
-        this.account = BigNumber(0);
+        this.count = BigNumber(0);
     }
 
     addAccount(cnt: BigNumber | number) {
         const formatCnt = new BigNumber(cnt);
-        this.account = this.account.plus(formatCnt);
+        this.count = this.count.plus(formatCnt);
         this.cost = this.cost.multipliedBy(this.upgradeRate.pow(formatCnt.plus(1)));
-        this.perEarnSubject.next(this.account.multipliedBy(this.value));
+        this.perEarnSubject.next(this.count.multipliedBy(this.value));
         console.log(`add goods ${this.name}`);
         
     }
