@@ -2,5 +2,6 @@
     "cSpell.words": [
         "cooldown",
         "pixi"
-    ]
+    ],
+    "nxConsole.generateAiAgentRules": true
 }
