@@ -8,6 +8,7 @@ export interface IGoods {
     cost: BigNumber;
     upgradeRate: BigNumber;
     count: BigNumber;
+    coldDown: BigNumber;
     perEarn$: Observable<BigNumber>;
     addAccount(cnt: BigNumber| number): void;
     costByAccount(cnt: BigNumber | number): BigNumber;
@@ -20,6 +21,7 @@ export class Goods implements IGoods {
     name: string;
     value: BigNumber;
     cost: BigNumber;
+    coldDown: BigNumber;
     upgradeRate: BigNumber;
     count: BigNumber;
     constructor() { 
@@ -29,6 +31,7 @@ export class Goods implements IGoods {
         this.cost = BigNumber(0);
         this.upgradeRate = BigNumber(0);
         this.count = BigNumber(0);
+        this.coldDown = BigNumber(5);
     }
 
     addAccount(cnt: BigNumber | number) {
@@ -86,5 +89,12 @@ export class GoodsFour extends Goods {
         this.cost = BigNumber(1800);
         this.upgradeRate = BigNumber(1.15);
         this.value = BigNumber(65);
+    }
+}
+
+export class WaterPhaseOne extends GoodsOne {
+    constructor() {
+        super();
+        this.name = 'water phase one';
     }
 }

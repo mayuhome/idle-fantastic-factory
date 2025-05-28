@@ -21,7 +21,9 @@ export class GoodsComponent {
 
   add(cnt = 1){
     const cost = this.good.costByAccount(cnt);
-    this.coinService.deductCoins(cost);
-    this.good.addAccount(cnt);
+    const success = this.coinService.deductCoins(cost);
+    if(success){
+      this.good.addAccount(cnt);
+    }
   }
 }

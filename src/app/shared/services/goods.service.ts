@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import BigNumber from 'bignumber.js';
 import { BehaviorSubject, combineLatest, combineLatestAll, map, mergeAll, Observable, reduce } from 'rxjs';
-import { Goods, GoodsFour, GoodsOne, GoodsThree, GoodsTwo, IGoods } from '../models/goods.model';
+import { Goods, GoodsFour, GoodsOne, GoodsThree, GoodsTwo, IGoods, WaterPhaseOne } from '../models/goods.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class GoodsService {
     console.log('init goods');
     
     this.goods = [
-      new GoodsOne(),
+      new WaterPhaseOne(),
       new GoodsTwo(),
       new GoodsThree(),
       new GoodsFour(),

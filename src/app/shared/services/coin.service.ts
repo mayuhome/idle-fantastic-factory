@@ -30,11 +30,12 @@ export class CoinService {
     }
   
     // 减少 coins
-    deductCoins(amount: BigNumber): void {
+    deductCoins(amount: BigNumber): boolean {
       if(this.coinsSubject.value.isLessThan(amount)) {
         console.warn('Not enough coins to deduct');
-        return;
+        return false;
       }
       this.coinsSubject.next(this.coinsSubject.value.minus(amount));
+      return true;
     }
 }
